@@ -71,23 +71,8 @@ function Signin() {
                                 </div>
                             </div>
                         </div>
-                        <footer className="footer position-absolute bottom-2 py-2 w-100">
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-12">
-                                        <div className="copyright text-center text-sm text-white">
-                                            © 2022 made with  by
-                                            <a rel="noopener noreferrer" href="https://www.google.com.tr/" className="font-weight-bold text-white" target="_blank"> Creative Tim </a>
-                                            for a better web.
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </footer>
                     </div>
                 </div>
-
             </div>
 
         </div>

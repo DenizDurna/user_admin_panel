@@ -11,7 +11,7 @@ function Admin() {
   const { status } = useSelector((state) => state.newUser)
   const dispatch = useDispatch()
 
-  // pull user data into form
+  //pull user data into form
   function onClickedit(user) {
     dispatch(setNewName(user.name))
     dispatch(setNewEmail(user.email))
@@ -135,23 +135,9 @@ function Admin() {
             </div>
           </div>
 
-          <footer className="footer py-4  ">
-            <div className="container-fluid">
-              <div className="row align-items-center justify-content-lg-between">
-                <div className="col-lg-6 mb-lg-0 mb-4">
-                  <div className="copyright text-center text-sm text-muted text-lg-start">
-                    2022 made with  by 
-                    <a href="#" className="font-weight-bold" target="_blank">Creative Tim</a>
-                    for a better web.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>
+          
         </div>
-      </main>
-
-      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
         <div className="modal-dialog">
           <div className="modal-content">
@@ -173,6 +159,9 @@ function Admin() {
           </div>
         </div>
       </div>
+      </main>
+
+      
     </div>
 
   )
