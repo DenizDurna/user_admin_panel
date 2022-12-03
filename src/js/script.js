@@ -15,5 +15,8 @@ const createUserFunc=(name,email,job,role,url,password)=>{
        }
 }
 
+function closeNodal (){
+  document.querySelector(".btn-close").click()
+}
 
-export { localUsers, localLoginUser,list,createUserFunc }
+export { localUsers, localLoginUser,list,createUserFunc,closeNodal }

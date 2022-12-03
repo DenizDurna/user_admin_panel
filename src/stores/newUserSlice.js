@@ -14,7 +14,7 @@ export const newUserSlice = createSlice({
         controlPassword:"",
         newUser:"",
         status:true,
-        refreshForm:true
+        refreshForm:true,
     },
     reducers: {
         setNewId:(state,action)=>{

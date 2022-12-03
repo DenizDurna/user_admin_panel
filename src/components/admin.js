@@ -1,6 +1,6 @@
 import "../style/style.css"
 import { EditUser } from "./editUser"
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { setNewName, setNewEmail, setNewJob, setNewRole, setNewUrl, setNewPassword, setStaus, setRefreshForm } from '../stores/newUserSlice'
 import { setAlert, setLogin } from '../stores/generalSlice'
 import { localUsers, localLoginUser } from "../js/script"
@@ -8,9 +8,10 @@ import { Button } from "bootstrap"
 
 
 function Admin() {
+  const { status } = useSelector((state) => state.newUser)
   const dispatch = useDispatch()
 
-  //pull user data into form
+  // pull user data into form
   function onClickedit(user) {
     dispatch(setNewName(user.name))
     dispatch(setNewEmail(user.email))
@@ -19,6 +20,7 @@ function Admin() {
     dispatch(setNewUrl(user.url))
     dispatch(setNewPassword(user.password))
     dispatch(setStaus(false))
+
   }
 
   //admin panel New user
@@ -36,31 +38,27 @@ function Admin() {
     if (i.email !== "dnzdurna@gmail.com") {
       const delUser = localUsers().filter(user => user.email !== i.email)
       localStorage.setItem("localUsers", JSON.stringify(delUser))
-      dispatch(setAlert(["Kullanıcı silindi", "primary"]))
+      dispatch(setAlert(["user deleted", "primary"]))
     }
   }
 
   return (
     <div className="g-sidenav-show  bg-gray-200">
 
-      <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <main className="main-content position-relative max-height-vh-100 h-100 border-radius ">
         {/*Navbar*/}
-        <nav className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
+        <nav className="navbar navbar-main navbar-expand px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
           <div className="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
               <h6 className="font-weight-bolder mb-0">List</h6>
             </nav>
-            <div className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-              <div className="ms-md-auto pe-md-3 d-flex align-items-center">
-              </div>
-              <ul className="navbar-nav  justify-content-end">
-
-                <li className="nav-item d-flex align-items-center mx-2 text-center ">
+            <div className="justify-content-end " id="navbar">
+              <ul className="navbar-nav text-center">
+                <li className="nav-item d-flex align-items-center">
                   <a className="nav-link text-body font-weight-bold px-0">
-                    <i className="fa fa-user me-sm-1"></i>
-                    <span className="d-sm-inline d-none mx-3"><img src={localLoginUser().url} className="avatar avatar-sm me-4 border-radius-lg" alt={localLoginUser().name} /></span> <br />
-                    <span className="d-sm-inline d-none">{localLoginUser().name}</span> <br />
-                    <span className="d-sm-inline d-none" onClick={onClickOut}>Sign Out</span>
+                    <span><img src={localLoginUser().url} className="avatar border-radius-lg" alt={localLoginUser().name} /></span> <br />
+                    <span >{localLoginUser().name}</span> <br />
+                    <button className="btn btn-secondary mt-2 px-3" onClick={onClickOut}>Sign Out</button>
                   </a>
                 </li>
               </ul>
@@ -158,7 +156,11 @@ function Admin() {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                {
+                status? "Add New User":"Edit User"
+                }
+                </h1>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
@@ -166,7 +168,7 @@ function Admin() {
             </div>
             <div className="modal-footer">
               <button className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" form="form1" className="btn btn-primary">Save changes</button>
+              <button type="submit" form="form1" className="btn btn-primary" >Save changes</button>
             </div>
           </div>
         </div>

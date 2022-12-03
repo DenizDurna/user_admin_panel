@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { setAlert, setLogin } from '../stores/generalSlice'
 import { setMail, setPassword } from '../stores/signinSlice'
-import { setNewName, setNewEmail, setNewJob, setNewRole, setNewUrl, setNewPassword, setControlPassword, setNewUser, } from '../stores/newUserSlice'
+import { setNewName, setNewEmail, setNewJob, setNewRole, setNewUrl, setNewPassword, setControlPassword, setNewUser } from '../stores/newUserSlice'
 import { Login } from "./login";
 import { Admin } from "./admin";
 import 'bootstrap/dist/css/bootstrap.min.css';
